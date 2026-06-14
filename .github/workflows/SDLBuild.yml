@@ -43,7 +43,7 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          - { os: windows-latest }
+          - { os: windows-2022 }
           - { os: macos-latest   }
           - { os: ubuntu-latest  }
 
@@ -53,7 +53,7 @@ jobs:
 
 
       - name: Cache SDL2 for Windows
-        if: ${{ matrix.os == 'windows-latest' }}
+        if: ${{ matrix.os == 'windows-2022' }}
         uses: actions/cache@v5
         id: cache-SLD2-windows
         with:
@@ -61,12 +61,12 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/scripts/installSDL2.bat') }}
 
       - name: Build SDL2 for Windows
-        if: matrix.os == 'windows-latest' && steps.cache-SLD2-windows.outputs.cache-hit != 'true'
+        if: matrix.os == 'windows-2022' && steps.cache-SLD2-windows.outputs.cache-hit != 'true'
         run: |
           .github/scripts/installSDL2.bat
 
       - name: Build LGFX_SDL2 for Windows
-        if: ${{ matrix.os == 'windows-latest' }}
+        if: ${{ matrix.os == 'windows-2022' }}
         env:
           CC: clang
           CXX: clang++
