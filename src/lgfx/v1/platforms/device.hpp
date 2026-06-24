@@ -21,7 +21,25 @@ Contributors:
 
  #include <sdkconfig.h>
 
- #if defined (CONFIG_IDF_TARGET_ESP32C6)
+ #if defined (CONFIG_IDF_TARGET_ESP32C2)
+
+  #include "esp32/Light_PWM.hpp"
+  #include "esp32/Bus_SPI.hpp"
+  #include "esp32/Bus_I2C.hpp"
+
+ #elif defined (CONFIG_IDF_TARGET_ESP32C5)
+
+  #include "esp32/Light_PWM.hpp"
+  #include "esp32/Bus_SPI.hpp"
+  #include "esp32/Bus_I2C.hpp"
+
+ #elif defined (CONFIG_IDF_TARGET_ESP32C6)
+
+  #include "esp32/Light_PWM.hpp"
+  #include "esp32/Bus_SPI.hpp"
+  #include "esp32/Bus_I2C.hpp"
+
+ #elif defined (CONFIG_IDF_TARGET_ESP32C61)
 
   #include "esp32/Light_PWM.hpp"
   #include "esp32/Bus_SPI.hpp"
