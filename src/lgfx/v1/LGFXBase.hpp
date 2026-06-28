@@ -1468,7 +1468,9 @@ namespace lgfx
     template <typename T>
     uint_fast8_t getTouchRaw(T *x, T *y, uint_fast8_t index = 0)
     {
-      touch_point_t tp[index + 1];
+      if (index >= 8) return 0;
+      touch_point_t tp[8];          // was VLA tp[index+1] — clang host build
+                                    // rejects it; mirror getTouch() below
       auto count = getTouchRaw(tp, index + 1);
       if (index >= count) return 0;
       if (x) *x = tp[index].x;
